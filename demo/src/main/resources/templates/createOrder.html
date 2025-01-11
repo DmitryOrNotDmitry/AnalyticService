@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+<div>
+    <h1>Создать новую операцию</h1>
+    <form th:action="@{/operations/newOperation}" method="post" th:object="${operation}">
+        <label for="id">ID:</label>
+        <input type="text" th:field="*{id}" required>
+        <br><br>
+
+        <label for="playerId">User ID:</label>
+        <input type="text" th:field="*{playerId}" required>
+        <br><br>
+
+        <label for="amount">Amount:</label>
+        <input type="number" th:field="*{amount}" required step="1">
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
