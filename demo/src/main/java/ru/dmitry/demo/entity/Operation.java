@@ -1,8 +1,5 @@
 package ru.dmitry.demo.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,11 +12,15 @@ public class Operation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private long playerId;
+
+    @ManyToOne
+    @JoinColumn(name = "player_id", nullable = false)
+    private Player player;
+
     private double amount;
 
-    public Operation(long playerId, double amount) {
-        this.playerId = playerId;
+    public Operation(Player player, double amount) {
+        this.player = player;
         this.amount = amount;
     }
 }

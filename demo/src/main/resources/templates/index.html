@@ -19,7 +19,7 @@
         <tbody>
         <tr th:each="op : ${operations}">
             <td th:text="${op.id}"></td>
-            <td th:text="${op.playerId}"></td>
+            <td th:text="${op.player.name}"></td>
             <td th:text="${op.amount}"></td>
         </tr>
         </tbody>

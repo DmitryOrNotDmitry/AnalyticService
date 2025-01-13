@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import ru.dmitry.demo.entity.Operation;
+import ru.dmitry.demo.entity.Player;
 import ru.dmitry.demo.repos.IOperationRepository;
+import ru.dmitry.demo.repos.IPlayerRepository;
+
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -19,6 +23,9 @@ public class OperationController {
     @Autowired
     private IOperationRepository operationRepo;
 
+    @Autowired
+    private IPlayerRepository playerRepo;
+
     @GetMapping
     public String operations() {
         return "createOrder";
@@ -26,7 +33,11 @@ public class OperationController {
 
     @PostMapping("/newOperation")
     public String createOperation(Operation operation) {
-        operationRepo.save(operation);
+        Optional<Player> p = playerRepo.findById(operation.getPlayer().getId());
+        if (p.isPresent()) {
+            operation.setPlayer(p.get());
+            operationRepo.save(operation);
+        }
 
         return "redirect:/";
     }

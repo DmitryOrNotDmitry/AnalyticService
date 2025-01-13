@@ -10,14 +10,14 @@
 <div>
     <h1>Создать новую операцию</h1>
     <form th:action="@{/operations/newOperation}" method="post" th:object="${operation}">
-        <label for="playerId">User ID:</label>
-        <input type="text" th:field="*{playerId}" required>
+        <label for="player_id">User ID:</label>
+        <input type="text" th:field="*{player.id}" required>
         <br><br>
 
         <label for="amount">Amount:</label>
         <input type="number" th:field="*{amount}" required step="1">
         <br><br>
-        
+
         <button type="submit">Submit</button>
     </form>
 </div>

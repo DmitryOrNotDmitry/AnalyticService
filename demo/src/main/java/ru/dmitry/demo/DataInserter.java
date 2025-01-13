@@ -19,11 +19,14 @@ public class DataInserter implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        playerRepo.save(new Player("Player 1"));
-        playerRepo.save(new Player("Player 2"));
+        Player p1 = new Player("Player 1");
+        Player p2 = new Player("Player 2");
 
-        operationRepo.save(new Operation(0, 1000));
-        operationRepo.save(new Operation(1, 100.12));
-        operationRepo.save(new Operation(0, 75));
+        playerRepo.save(p1);
+        playerRepo.save(p2);
+
+        operationRepo.save(new Operation(p1, 1000));
+        operationRepo.save(new Operation(p2, 100.12));
+        operationRepo.save(new Operation(p1, 75));
     }
 }

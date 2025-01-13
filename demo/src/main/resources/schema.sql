@@ -9,3 +9,5 @@ CREATE TABLE Operation (
     amount DOUBLE NOT NULL,
     FOREIGN KEY (player_id) REFERENCES Player(id) ON DELETE CASCADE
 );
+
+alter table Operation add foreign key (player_id) references Player(id);
